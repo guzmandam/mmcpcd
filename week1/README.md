@@ -1,4 +1,4 @@
-# Algoritmo 6.1
+# Algoritmo 6.1 - Eliminacion Gaussiana con Sustitución Hacia Atras (backward substitution)
 
 Se encuentra en el archivo `six_one.jl`. La matriz de `input` representa un sistema de ecuaciones de `n` incognitas.
 
@@ -14,7 +14,7 @@ Por ejemplo:
 
 `[x_1, x_2, x_3, ..., x_n]`
 
-# Algoritmo 6.2
+# Algoritmo 6.2 - Eliminacion Gaussiana con Pivoteo Parcial
 
 Se encuentra en el archivo `six_two.jl`. La matriz de `input` representa un sistema de ecuaciones de `n` incognitas.
 
