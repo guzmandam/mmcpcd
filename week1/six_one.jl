@@ -1,7 +1,7 @@
 include("utils.jl")
 
 A = float(getMatrixInput())
-printMatrix(A)
+display(A)
 
 n, m = size(A)
 
@@ -38,7 +38,7 @@ for i in 1:n-1 # En el libro se menciona que es de 1 a n-1 pues se toma la matri
         new_row = A[j, :] - (m_ji * A[i, :])
         A[j, :] = new_row
 
-        printMatrix(A)
+        display(A)
     end
 end
 
