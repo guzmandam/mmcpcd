@@ -1,6 +1,8 @@
 # Algoritmo 6.1
 
-Se encuentra en el archivo `six_one.jl`.
+Se encuentra en el archivo `six_one.jl`. La matriz de `input` representa un sistema de ecuaciones de `n` incognitas.
+
+El algoritmo está preparado para detectar cuándo el sistema no tiene solución.
 
 ## Input
 El usuario deberá ingresar las dimensiones de la matriz para posteriormente ingresar los valores para cada posicion en la matriz.
@@ -14,7 +16,9 @@ Por ejemplo:
 
 # Algoritmo 6.2
 
-Se encuentra en el archivo `six_two.jl`.
+Se encuentra en el archivo `six_two.jl`. La matriz de `input` representa un sistema de ecuaciones de `n` incognitas.
+
+El algoritmo está preparado para detectar cuándo el sistema no tiene solución.
 
 ## Input
 El usuario deberá ingresar las dimensiones de la matriz para posteriormente ingresar los valores para cada posicion en la matriz.
