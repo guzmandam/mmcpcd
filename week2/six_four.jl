@@ -1,11 +1,7 @@
 using LinearAlgebra
+include("utils.jl")
 
-# A = getMatrixInput() # Square Matrix (n x n)
-A = [ 
-      1.0 6.0 4.0 ;
-      2.0 6.0 2.0 ;
-      7.0 9.0 4.0
-    ]
+A = getMatrixInput() # Square Matrix (n x n)
 n, _ = size(A) # Get dimension (n)
 
 # Initialize L and U 
