@@ -1,82 +1,11 @@
-function getMatrixInput() :: Matrix{Float64}
-    println("Creando la matriz")
-    println("Ingresa el numero de filas: ")
-    n = parse(Int, readline())
-    println("Ingresa el numero de columnas: ")
-    m = parse(Int, readline())
-
-    if m != n+1
-        println("Error de dimension")
-        exit()
-    end
-
-    M = Matrix{Float64}(undef, n, m)
-    
-    for i in 1:n
-        for j in 1:m
-            print("Ingresa el número en la posición [$i, $j]: ")
-            num = parse(Float64, readline())
-            M[i,j] = num
-            println()
-        end
-    end
-
-    return M
-end
-
-function getMaxValuesByRow(row :: Vector{Float64}) :: Tuple{Int, Float64}
-    index = argmax(abs.(row))
-    value = row[index]
-
-    return (index, value)
-end
-
-function get_s_is(M :: Matrix{Float64}):: Vector{Vector{Float64}}
-    n, m = size(M)
-    
-    s_is = Vector{Vector{Float64}}(undef, n)
-
-    for i in 1:n
-        i_row = M[i,:][1:end-1]
-    
-        max_index, value = getMaxValuesByRow(i_row)
-        s_i = [max_index, abs(value)]
-
-        s_is[i] = s_i
-    end
-
-    return s_is
-end
-
-function get_max_col_index_quotient(col :: Vector{Float64}, start :: Int, s_is :: Vector{Vector{Float64}}) :: Int
-    n = size(col)[1]
-    
-    quotients = Vector{Float64}(undef, n)
-
-    for i in 1:n
-        if (i < start)
-            quotients[i] = 0.0
-        else
-            s_i_value = s_is[i][2]
-            # s_i_index = s_is[i][1]
-
-            q = col[i]/s_i_value
-
-            quotients[i] = q
-        end
-    end
-
-    max_index = argmax(abs.(quotients))
-
-    return max_index
-end
+include("utils.jl")
 
 # A = [
 #      2.11 -4.21 0.921 2.01 ;
 #      4.01 10.2 -1.12 -3.09 ;
 #      1.09 0.987 0.832 4.21
 #     ]
-A = getMatrixInput()
+A = float(getMatrixInput())
 n, m = size(A)
 s_is = get_s_is(A)
 

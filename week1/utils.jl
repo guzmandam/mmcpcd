@@ -66,9 +66,6 @@ function getMatrixInput() :: Matrix{Float64}
 end
 
 function getVectorInput(vectorName :: String, dim :: Int) :: Vector{Float64}
-    """
-     sdsdsd
-    """
     println("Creando el vector $vectorName")
     n = dim
 
@@ -82,4 +79,51 @@ function getVectorInput(vectorName :: String, dim :: Int) :: Vector{Float64}
     end
 
     return V
+end
+
+function getMaxValuesByRow(row :: Vector{Float64}) :: Tuple{Int, Float64}
+    index = argmax(abs.(row))
+    value = row[index]
+
+    return (index, value)
+end
+
+function get_s_is(M :: Matrix{Float64}):: Vector{Vector{Float64}}
+    n, m = size(M)
+    
+    s_is = Vector{Vector{Float64}}(undef, n)
+
+    for i in 1:n
+        i_row = M[i,:][1:end-1]
+    
+        max_index, value = getMaxValuesByRow(i_row)
+        s_i = [max_index, abs(value)]
+
+        s_is[i] = s_i
+    end
+
+    return s_is
+end
+
+function get_max_col_index_quotient(col :: Vector{Float64}, start :: Int, s_is :: Vector{Vector{Float64}}) :: Int
+    n = size(col)[1]
+    
+    quotients = Vector{Float64}(undef, n)
+
+    for i in 1:n
+        if (i < start)
+            quotients[i] = 0.0
+        else
+            s_i_value = s_is[i][2]
+            # s_i_index = s_is[i][1]
+
+            q = col[i]/s_i_value
+
+            quotients[i] = q
+        end
+    end
+
+    max_index = argmax(abs.(quotients))
+
+    return max_index
 end
