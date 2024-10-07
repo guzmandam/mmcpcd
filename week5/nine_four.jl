@@ -1,6 +1,7 @@
 using LinearAlgebra
 
 function householder_tridiagonal(A)
+    A = float(A)
     n = size(A, 1)
     A_tridiagonal = copy(A)
 
@@ -24,7 +25,7 @@ function householder_tridiagonal(A)
         v[(k + 2):n] .= A_tridiagonal[(k + 2):n, k]
 
         # Paso 6: Calcular u
-        u = (1 / RSQ) * A_tridiagonal * v
+        u = (1 / RSQ) * (A_tridiagonal * v)
 
         # Paso 7: Calcular PROD
         PROD = dot(v, u)
@@ -41,8 +42,8 @@ function householder_tridiagonal(A)
         end
 
         # Paso 11-14: Actualizar valores específicos de A_tridiagonal
-        A_tridiagonal[k + 1, k] = v[k + 1]
-        A_tridiagonal[k, k + 1] = v[k + 1]
+        A_tridiagonal[k + 1, k] = alfa
+        A_tridiagonal[k, k + 1] = alfa
         A_tridiagonal[(k + 2):n, k] .= 0
         A_tridiagonal[k, (k + 2):n] .= 0
     end
@@ -51,10 +52,12 @@ function householder_tridiagonal(A)
 end
 
 # Ejemplo de uso
-A = [4.0 1.0 1.0 0.0;
-     1.0 3.0 1.0 1.0;
-     1.0 1.0 2.0 1.0;
-     0.0 1.0 1.0 2.0]
+A = [
+    4 1 -2 2;
+    1 2 0 1;
+    -2 0 3 -2;
+    2 1 -2 -1
+]
 
 A_tridiagonal = householder_tridiagonal(A)
 println("Matriz tridiagonal resultante:")
