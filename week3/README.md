@@ -19,6 +19,32 @@ El polinomio característico se utiliza para encontrar los valores propios de la
 ## Input
 El usuario deberá proporcionar los coeficientes de la forma cuádrica, que incluyen los términos cuadrados `A`, `B`, `C` y los términos cruzados `D`, `E`, `F`.
 
-
 ## Output
 El programa construye una matriz simétrica a partir de los coeficientes proporcionados y calcula su polinomio característico.
+
+# Algoritmo para Solución de Mínimos Cuadrados con Pseudoinversa
+
+Se encuentra en el archivo `pseudoinv.jl`. Este algoritmo tiene como objetivo aplicar la matriz pseudoinversa para obtener la solución de mínimos cuadrados para un sistema lineal, utilizando la biblioteca `LinearAlgebra` de Julia.
+
+La pseudoinversa se utiliza para resolver sistemas lineales sobredeterminados o que no tienen una solución exacta, minimizando la suma de los errores cuadráticos.
+
+## Input
+El usuario deberá proporcionar una matriz `A` de tamaño `m x n`, donde `m` es el número de ecuaciones y `n` el número de incógnitas.
+
+### Ejemplo de Input de Prueba
+```julia
+A = [3 2 0;
+     1 0 0;
+     0 2 3]
+```
+
+## Output
+El programa calcula la pseudoinversa de la matriz `A` y resuelve el sistema para un vector `b` aleatorio generado internamente.
+
+Por ejemplo:
+
+```
+Solución de mínimos cuadrados utilizando la pseudoinversa: [0.876, -0.234, 0.156]
+```
+
+El programa muestra la solución del sistema utilizando la pseudoinversa, minimizando la suma de los errores cuadráticos en el caso de sistemas sin una solución exacta.
